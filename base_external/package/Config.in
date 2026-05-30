@@ -1,4 +1,4 @@
-menu "External packages"
+menu "AESD packages"
 
 source "$BR2_EXTERNAL/package/aesd-assignments/Config.in"
 
