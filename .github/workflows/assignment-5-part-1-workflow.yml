@@ -1,9 +1,9 @@
-name: assignment5-part1
+name: Assignment 5 Part 1 Workflow
 
 on:
   push:
     branches:
-      - '*'
+      - main
     tags-ignore:
       - '*'
 
@@ -17,5 +17,5 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y build-essential
 
-      - name: Build
-        run: make
+      - name: Build finder-app
+        run: make -C finder-app
