@@ -1,21 +1,30 @@
-name: assignment-test
+name: assignment5-part2
 
 on:
   push:
-    branches:
-      - '*'
-    tags-ignore:
-      - '*'
+    tags:
+      - assignment-5-part-2
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  full-test:
+    runs-on: self-hosted
+    container: cuaesd/aesd-autotest:24-assignment5-buildroot
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
 
-      - name: Build
-        run: make
+      - uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Run full test
+        env:
+          GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
+        run: ./full-test.sh
+
+      - name: Cleanup
+        if: always()
+        run: ssh-add -D
