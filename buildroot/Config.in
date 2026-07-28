@@ -34,6 +34,7 @@ config BR2_BASE_DIR
 # br2-external paths definitions
 source "$BR2_BASE_DIR/.br2-external.in.paths"
 
+
 # Hidden config symbols for packages to check system gcc version
 config BR2_HOST_GCC_VERSION
 	string

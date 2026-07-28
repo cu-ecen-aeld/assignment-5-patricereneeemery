@@ -1,5 +1,5 @@
 menu "AESD assignments"
 
-source "$BR2_EXTERNAL_BASE_EXTERNAL_PATH/package/Config.in"
+source "$BR2_EXTERNAL/package/Config.in"
 
 endmenu
