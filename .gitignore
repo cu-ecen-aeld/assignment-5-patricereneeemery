@@ -1,4 +1,7 @@
 *.o
 build/
 .vscode/
-*.log
+test.sh.log
+aesdsocket
+server/aesdsocket
+server/valgrind-out.txt
